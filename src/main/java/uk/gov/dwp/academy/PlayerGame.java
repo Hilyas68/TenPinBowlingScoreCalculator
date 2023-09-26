@@ -16,6 +16,10 @@ public class PlayerGame {
 
   public RollResponse roll(int pins) {
 
+    if (pins < 0) {
+      return new RollResponse(false);
+    }
+
     gameState.checkPinCount(pins);
     gameState.recordRoll(pins);
     gameScore.calculate();
