@@ -14,10 +14,10 @@ public class PlayerGame {
     this.gameScore = gameScore;
   }
 
-  public RollResponse roll(int i) {
+  public RollResponse roll(int pins) {
 
-    gameState.checkPinCount(i);
-    gameState.recordRoll(i);
+    gameState.checkPinCount(pins);
+    gameState.recordRoll(pins);
     gameScore.calculate();
 
     return new RollResponse(false);

@@ -8,7 +8,6 @@ import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -37,7 +36,7 @@ public class PlayerGameTest {
   @DisplayName("Given an invalid pin then return outcome as false")
   public void givenInvalidPinReturnFalse(int input) {
     RollResponse rollResponse = playerGame.roll(input);
-    assertEquals(false, rollResponse.success(), "should return false");
+    assertFalse(rollResponse.success(), "should return false");
   }
 
   @ParameterizedTest
