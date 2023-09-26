@@ -22,6 +22,7 @@ public class PlayerGameTest {
 
   @Mock
   private GameStateInterface gameState;
+  private GameScoreInterface gameScore;
   private PlayerGame playerGame;
 
   @BeforeEach
@@ -47,14 +48,20 @@ public class PlayerGameTest {
     verify(gameState, times(1)).checkPinCount(anyInt());
   }
   
-  @Test
+  @ParameterizedTest
+  @CsvSource({"0", "10"})
   @DisplayName("Given a valid pin then recordRoll is called")
-  public void givenValidPinThenRecordRollIsCalled() {
-    when(gameState.recordRoll(0)).thenReturn(anyInt());
-    playerGame.roll(0);
+  public void givenValidPinThenRecordRollIsCalled(int input) {
+    when(gameState.recordRoll(input)).thenReturn(anyInt());
+    playerGame.roll(input);
 
     verify(gameState, times(1)).recordRoll(anyInt());
   }
 
-  
+  @Test
+  @DisplayName("Given a valid pin then calculate score is called")
+  public void givenValidPinThenCallCalculateScore() {
+
+
+  }
 }
