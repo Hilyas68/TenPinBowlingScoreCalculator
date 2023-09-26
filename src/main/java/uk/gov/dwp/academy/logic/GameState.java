@@ -18,8 +18,11 @@ public class GameState implements GameStateInterface {
   }
 
   @Override
-  public int recordRoll(int i) {
-    rollRecord.put(i);
+  public int recordRoll(int pins) {
+    if (pins == 10) {
+      frameState++;
+    }
+    rollRecord.put(pins);
     return frameState;
   }
 
