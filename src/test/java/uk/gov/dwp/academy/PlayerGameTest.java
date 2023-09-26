@@ -69,6 +69,14 @@ public class PlayerGameTest {
 
     verify(gameScore, times(1)).calculate();
   }
-  
+
+  @ParameterizedTest
+  @CsvSource({"-1", "11"})
+  @DisplayName("Given an invalid pin then checkPinCount not called")
+  public void givenInvalidPinCheckPinCountNoCalled(int input) {
+
+    playerGame.roll(input);
+    verify(gameState, times(0)).checkPinCount(anyInt());
+  }
 
 }
