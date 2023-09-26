@@ -6,10 +6,12 @@ public class GameState implements GameStateInterface {
 
   private PinMap rollRecord;
   private int frameState;
+  private int rollsInFrame;
 
   public GameState() {
     rollRecord = new PinMap();
     frameState = 1;
+    rollsInFrame = 0;
   }
 
   @Override
