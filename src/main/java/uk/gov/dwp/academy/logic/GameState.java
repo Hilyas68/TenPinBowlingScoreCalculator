@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class GameState implements GameStateInterface {
 
-  private PinMap rollRecord;
+  private final PinMap rollRecord;
   private int frameState;
   private int rollsInFrame;
 
