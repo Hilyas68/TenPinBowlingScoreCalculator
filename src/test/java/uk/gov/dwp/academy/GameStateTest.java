@@ -45,10 +45,17 @@ public class GameStateTest {
   }
 
   @Test
-  @DisplayName("Given pins that are not strikes, return frame as one")
-  public void givenPinsThatAreNotStrikesReturnOne() {
+  @DisplayName("Given a roll that is not a strike, return frame as one")
+  public void givenRollThatIsNotAStrikeReturnOne() {
     int result = gameState.recordRoll(6);
     assertEquals(1,result,"should return frame id as 1");
+  }
+
+  @Test
+  @DisplayName("Given a roll that is a strike, return next frame")
+  public void givenRollThatIsStrikeReturnNextFrame(){
+    int result = gameState.recordRoll(10);
+    assertEquals(2, result, "should return next frame");
   }
 
   // Given a start of frame x
