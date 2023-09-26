@@ -4,5 +4,5 @@ public interface GameStateInterface {
 
   boolean checkPinCount(int i);
 
-  Object recordRoll(int i);
+  int recordRoll(int i);
 }

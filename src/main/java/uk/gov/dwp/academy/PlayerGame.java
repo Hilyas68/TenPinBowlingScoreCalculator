@@ -16,7 +16,7 @@ public class PlayerGame {
 
   public RollResponse roll(int pins) {
 
-    if (pins < 0) {
+    if (pins < 0 || pins > 10) {
       return new RollResponse(false);
     }
 
