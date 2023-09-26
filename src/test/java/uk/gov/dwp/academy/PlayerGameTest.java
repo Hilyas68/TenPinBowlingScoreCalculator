@@ -14,6 +14,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import uk.gov.dwp.academy.logic.GameScoreInterface;
 import uk.gov.dwp.academy.logic.GameStateInterface;
 import uk.gov.dwp.academy.tenpin.RollResponse;
 
@@ -48,7 +49,7 @@ public class PlayerGameTest {
 
     verify(gameState, times(1)).checkPinCount(anyInt());
   }
-  
+
   @ParameterizedTest
   @CsvSource({"0", "10"})
   @DisplayName("Given a valid pin then recordRoll is called")
