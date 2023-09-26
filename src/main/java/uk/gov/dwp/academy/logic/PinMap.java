@@ -16,5 +16,5 @@ public class PinMap {
 
   public HashMap<Integer, Integer> get() {
       return record;
-  };
+  }
 }

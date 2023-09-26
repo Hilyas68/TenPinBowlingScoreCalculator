@@ -1,12 +1,8 @@
 package uk.gov.dwp.academy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.when;
 
-import java.util.HashMap;
-import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.dwp.academy.logic.GameState;
-import uk.gov.dwp.academy.logic.GameStateInterface;
 import uk.gov.dwp.academy.logic.PinMap;
 
 @ExtendWith(MockitoExtension.class)
@@ -56,6 +51,15 @@ public class GameStateTest {
   public void givenRollThatIsStrikeReturnNextFrame(){
     int result = gameState.recordRoll(10);
     assertEquals(2, result, "should return next frame");
+  }
+
+  @Test
+  @DisplayName("Given two rolls that are not strikes, return the next frame")
+  public void givenTwoRollsThatAreNotStrikesReturnNextFrame() {
+
+    gameState.recordRoll(5);
+    int result = gameState.recordRoll(2);
+    assertEquals(2, result,"should return the next frame");
   }
 
   // Given a start of frame x

@@ -19,9 +19,18 @@ public class GameState implements GameStateInterface {
 
   @Override
   public int recordRoll(int pins) {
+
     if (pins == 10) {
       frameState++;
+      rollsInFrame = 0;
+    } else {
+      rollsInFrame++;
+      if (rollsInFrame == 2) {
+        frameState++;
+        rollsInFrame = 0;
+      }
     }
+
     rollRecord.put(pins);
     return frameState;
   }
