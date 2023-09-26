@@ -4,10 +4,10 @@ import java.util.Map;
 
 public class GameState implements GameStateInterface {
 
-  private HashMap<Integer, Integer> rollRecord;
+  private PinMap rollRecord;
 
   public GameState() {
-    rollRecord = new HashMap<>();
+    rollRecord = new PinMap();
   }
 
   @Override
@@ -17,6 +17,7 @@ public class GameState implements GameStateInterface {
 
   @Override
   public int recordRoll(int i) {
+    rollRecord.put(i);
     return 1;
   }
 

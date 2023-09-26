@@ -13,21 +13,26 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.dwp.academy.logic.GameState;
 import uk.gov.dwp.academy.logic.GameStateInterface;
+import uk.gov.dwp.academy.logic.PinMap;
 
 @ExtendWith(MockitoExtension.class)
 public class GameStateTest {
 
   @InjectMocks
-  private HashMap<Integer, Integer> rollRecord;
+  private GameState gameState;
+
+  @Mock
+  private PinMap rollRecord;
 
   @ParameterizedTest
   @CsvSource({"0, 1"})
   @DisplayName("Given pin, record the roll and return frame id")
   public void givenPinRecordRollReturnFrame(int input, int expectedFrameId) {
-    GameStateInterface gameState = new GameState();
     int frameId = gameState.recordRoll(input);
     assertEquals(expectedFrameId, frameId, "should return frame id");
   }
