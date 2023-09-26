@@ -51,6 +51,40 @@ public class GameStateTest {
     assertEquals(1,result,"should return frame id as 1");
   }
 
-  // Given a new game
-  // when two rolls
+  // Given a start of frame x
+  // when one roll - not a strike
+  // then frame will be x
+
+  // Given a start of frame x
+  // when one roll - strike
+  // then frame will be x+1
+
+  // Given a start of frame x
+  // when two rolls - not a strike
+  // then frame will be x+1
+
+  // Given a start of frame x
+  // when two rolls - both strikes
+  // then frame will be x+2
+
+  // Given a start of frame 10
+  // when two rolls - a spare
+  // then frame will be 10
+
+  // Given a start of frame 10
+  // when one roll - a strike
+  // then frame will be 10
+
+  // Given a start of frame 10
+  // when three rolls - a strike + 2 rolls
+  // then frame will be 11
+
+  // Given a start of frame 10
+  // when three rolls - a spare + 1 roll
+  // then frame will be 11
+
+  // Given a start of frame 10
+  // when two rolls - not a strike or spare
+  // then frame will be 11
+
 }
