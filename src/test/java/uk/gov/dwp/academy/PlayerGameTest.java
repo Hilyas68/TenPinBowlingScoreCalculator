@@ -22,12 +22,13 @@ public class PlayerGameTest {
 
   @Mock
   private GameStateInterface gameState;
+  @Mock
   private GameScoreInterface gameScore;
   private PlayerGame playerGame;
 
   @BeforeEach
   public void setup() {
-    playerGame = new PlayerGame(gameState);
+    playerGame = new PlayerGame(gameState, gameScore);
   }
 
   @ParameterizedTest
@@ -61,7 +62,9 @@ public class PlayerGameTest {
   @Test
   @DisplayName("Given a valid pin then calculate score is called")
   public void givenValidPinThenCallCalculateScore() {
+    when(gameScore.calculate()).thenReturn(anyInt());
+    playerGame.roll(0);
 
-
+    verify(gameScore, times(1)).calculate();
   }
 }
