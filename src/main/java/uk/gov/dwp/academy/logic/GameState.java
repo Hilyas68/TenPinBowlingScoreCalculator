@@ -1,5 +1,6 @@
 package uk.gov.dwp.academy.logic;
 
+import java.util.HashMap;
 import uk.gov.dwp.academy.logic.GameStateInterface;
 
 public class GameState implements GameStateInterface {
