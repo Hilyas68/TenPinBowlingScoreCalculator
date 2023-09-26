@@ -5,9 +5,11 @@ import java.util.Map;
 public class GameState implements GameStateInterface {
 
   private PinMap rollRecord;
+  private int frameState;
 
   public GameState() {
     rollRecord = new PinMap();
+    frameState = 1;
   }
 
   @Override
@@ -18,7 +20,7 @@ public class GameState implements GameStateInterface {
   @Override
   public int recordRoll(int i) {
     rollRecord.put(i);
-    return 1;
+    return frameState;
   }
 
   @Override

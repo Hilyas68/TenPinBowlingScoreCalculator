@@ -44,6 +44,13 @@ public class GameStateTest {
     Mockito.verify(rollRecord, times(1)).put(8);
   }
 
+  @Test
+  @DisplayName("Given pins that are not strikes, return frame as one")
+  public void givenPinsThatAreNotStrikesReturnOne() {
+    int result = gameState.recordRoll(6);
+    assertEquals(1,result,"should return frame id as 1");
+  }
+
   // Given a new game
   // when two rolls
 }
