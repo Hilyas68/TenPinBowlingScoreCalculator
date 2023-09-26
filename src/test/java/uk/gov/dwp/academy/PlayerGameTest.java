@@ -52,7 +52,7 @@ public class PlayerGameTest {
 
   @ParameterizedTest
   @CsvSource({"0", "10"})
-  @DisplayName("Given a valid pin then recordRoll is called")
+  @DisplayName("Given valid pins then recordRoll is called")
   public void givenValidPinThenRecordRollIsCalled(int input) {
     when(gameState.recordRoll(input)).thenReturn(anyInt());
     playerGame.roll(input);
@@ -60,12 +60,15 @@ public class PlayerGameTest {
     verify(gameState, times(1)).recordRoll(anyInt());
   }
 
-  @Test
-  @DisplayName("Given a valid pin then calculate score is called")
-  public void givenValidPinThenCallCalculateScore() {
+  @ParameterizedTest
+  @CsvSource({"0", "10"})
+  @DisplayName("Given valid pins then calculate score is called")
+  public void givenValidPinThenCallCalculateScore(int input) {
     when(gameScore.calculate()).thenReturn(anyInt());
-    playerGame.roll(0);
+    playerGame.roll(input);
 
     verify(gameScore, times(1)).calculate();
   }
+
+  
 }
