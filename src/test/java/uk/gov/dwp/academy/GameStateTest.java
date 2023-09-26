@@ -31,4 +31,14 @@ public class GameStateTest {
     int frameId = gameState.recordRoll(input);
     assertEquals(expectedFrameId, frameId, "should return frame id");
   }
+
+  @Test
+  @DisplayName("Given a pin when the roll is recorded, confirm state")
+  public void whenRollIsRecordedConfirmState() {
+    gameState.recordRoll(8);
+    Mockito.verify(rollRecord, times(1)).put(8);
+  }
+
+  // Given a new game
+  // when two rolls
 }
