@@ -1,6 +1,6 @@
 package uk.gov.dwp.academy;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -68,6 +68,6 @@ public class PlayerGameTest {
 
     verify(gameScore, times(1)).calculate();
   }
-
   
+
 }
