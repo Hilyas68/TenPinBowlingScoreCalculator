@@ -14,6 +14,7 @@ public class PlayerGame {
   public RollResponse roll(int i) {
 
     gameState.checkPinCount(i);
+    gameState.recordRoll(i);
     return new RollResponse(false);
   }
 }

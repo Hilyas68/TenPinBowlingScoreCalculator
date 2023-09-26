@@ -46,4 +46,15 @@ public class PlayerGameTest {
 
     verify(gameState, times(1)).checkPinCount(anyInt());
   }
+  
+  @Test
+  @DisplayName("Given a valid pin then recordRoll is called")
+  public void givenValidPinThenRecordRollIsCalled() {
+    when(gameState.recordRoll(0)).thenReturn(anyInt());
+    playerGame.roll(0);
+
+    verify(gameState, times(1)).recordRoll(anyInt());
+  }
+
+  
 }
