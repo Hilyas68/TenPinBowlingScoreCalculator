@@ -51,11 +51,13 @@ public class GameStateTest {
     assertEquals(1,result,"should return frame id as 1");
   }
 
-  @Test
+  @ParameterizedTest
+  @CsvSource({"10, 1, 2"})
   @DisplayName("Given a roll that is a strike, return next frame")
-  public void givenRollThatIsStrikeReturnNextFrame(){
-    int result = gameState.recordRoll(10);
-    assertEquals(2, result, "should return next frame");
+  public void givenRollThatIsStrikeReturnNextFrame(int input, int initialState, int expectedFrame){
+   // when(rollRecord.getFrameState()).thenReturn(initialState);
+    int result = gameState.recordRoll(input);
+    assertEquals(expectedFrame, result, "should return next frame");
   }
 
   // Given a start of frame x

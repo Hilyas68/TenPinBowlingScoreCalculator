@@ -9,6 +9,4 @@ public interface GameStateInterface {
   int recordRoll(int i);
 
   Map<Integer, Integer> getRecord();
-
-  int getInitialFrameState();
 }

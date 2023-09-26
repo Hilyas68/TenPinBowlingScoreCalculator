@@ -20,7 +20,7 @@ public class GameState implements GameStateInterface {
   @Override
   public int recordRoll(int pins) {
     if (pins == 10) {
-      frameState = getInitialFrameState() + 1;
+      frameState++;
     }
     rollRecord.put(pins);
     return frameState;
@@ -29,10 +29,5 @@ public class GameState implements GameStateInterface {
   @Override
   public Map<Integer, Integer> getRecord() {
     return rollRecord.get();
-  }
-
-  @Override
-  public int getInitialFrameState() {
-    return frameState;
   }
 }
