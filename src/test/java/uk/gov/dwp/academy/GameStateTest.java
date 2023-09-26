@@ -2,6 +2,7 @@ package uk.gov.dwp.academy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.HashMap;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.dwp.academy.logic.GameState;
 import uk.gov.dwp.academy.logic.GameStateInterface;
 
+@ExtendWith(MockitoExtension.class)
 public class GameStateTest {
 
   @InjectMocks
