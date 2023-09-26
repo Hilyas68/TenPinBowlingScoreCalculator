@@ -1,7 +1,6 @@
 package uk.gov.dwp.academy.logic;
 
-import java.util.HashMap;
-import uk.gov.dwp.academy.logic.GameStateInterface;
+import java.util.Map;
 
 public class GameState implements GameStateInterface {
 
@@ -19,5 +18,10 @@ public class GameState implements GameStateInterface {
   @Override
   public int recordRoll(int i) {
     return 1;
+  }
+
+  @Override
+  public Map<Integer, Integer> getRecord() {
+    return rollRecord.get();
   }
 }
