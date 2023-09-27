@@ -45,13 +45,13 @@ public class GameState implements GameStateInterface {
       }
     } else {
       pinsCount += pins;
-      if(isNotSpare()){
-        frameState++;
+      if(rollsInFrame > 0) {
+        if (isNotSpare()) {
+          frameState++;
+        } else if (rollsInFrame == 2) {
+          frameState++;
+        }
       }
-      if (rollsInFrame == 2) {
-        frameState++;
-      }
-
 
       rollsInFrame++;
     }
