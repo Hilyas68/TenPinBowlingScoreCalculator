@@ -44,6 +44,10 @@ public class GameState implements GameStateInterface {
         }
       }
     } else {
+      pinsCount += pins;
+      if(rollsInFrame == 1 && pinsCount < 10){
+        frameState++;
+      }
       if (rollsInFrame == 2) {
         frameState++;
       }
