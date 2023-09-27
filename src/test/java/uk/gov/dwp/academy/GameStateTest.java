@@ -118,6 +118,17 @@ public class GameStateTest {
     int frame = state.recordRoll(0);
     assertEquals(11, frame, "Should return frame 1");
   }
+
+  @Test
+  @DisplayName("Given a spare and a roll in frame 10, return frame 11")
+  public void givenASpareAndARollInFrame10ReturnFrame11() {
+    GameState state = new GameState(10);
+    state.recordRoll(5);
+    state.recordRoll(5);
+    int frame = state.recordRoll(9);
+    assertEquals(11, frame, "Should return frame 11");
+  }
+
   // Given a start of frame x
   // when one roll - not a strike
   // then frame will be x
