@@ -41,10 +41,10 @@ public class GameScoreTest {
   }
 
   @Test
-  @DisplayName("Given rolls that are spare with a bonus return score")
-  public void givenASpareWithBonusRollCalculateScore(){
-    when(gameState.getRecord()).thenReturn(generateRecordWithSpareAndBonus());
-    assertEquals(13, gameScore.calculate(), "Should return score for a spare with bonus");
+  @DisplayName("Given record with a spare return cumulative score")
+  public void recordWithASpareReturnScore(){
+    when(gameState.getRecord()).thenReturn(generateRecordWithSpare());
+    assertEquals(35, gameScore.calculate(), "Should return score for a spare with bonus");
   }
 
   private Map<Integer, Integer> generateRecordWithNoStrikeOrSpare() {
@@ -62,14 +62,7 @@ public class GameScoreTest {
     return record;
   }
 
-  private Map<Integer, Integer> generateRecordForTwoRolls() {
-    Map<Integer, Integer> record = new HashMap<>();
-    record.put(1, 5);
-    record.put(2, 3);
-    return record;
-  }
-
-  private Map<Integer, Integer> generateRecordWithSpareAndBonus() {
+  private Map<Integer, Integer> generateRecordWithSpare() {
     Map<Integer, Integer> record = new HashMap<>();
     record.put(1, 5);
     record.put(2, 5);
