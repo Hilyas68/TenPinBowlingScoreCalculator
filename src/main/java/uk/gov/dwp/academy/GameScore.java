@@ -19,7 +19,11 @@ public class GameScore implements GameScoreInterface {
   public int calculate() {
 
     Map<Integer, Integer> records = gameState.getRecord();
+    int score = 0;
+    for(int key : records.keySet()){
+      score += records.get(key);
+    }
 
-    return records.get(1);
+    return score;
   }
 }

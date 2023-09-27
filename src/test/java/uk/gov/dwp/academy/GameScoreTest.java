@@ -26,7 +26,15 @@ public class GameScoreTest {
     GameScore gameScore = new GameScore(gameState);
     int score = gameScore.calculate();
     assertEquals(5, score, "should return score 5");
+  }
 
+  @Test
+  @DisplayName("Given two rolls return the score")
+  public void givenTwoRollsReturnScore() {
+    when(gameState.getRecord()).thenReturn(generateRecordForTwoRolls());
+    GameScore gameScore = new GameScore(gameState);
+    int score = gameScore.calculate();
+    assertEquals(8, score, "Should return the score for two rolls.");
   }
 
   private Map<Integer, Integer> generateRecordForSingleRoll() {
@@ -38,6 +46,7 @@ public class GameScoreTest {
   private Map<Integer, Integer> generateRecordForTwoRolls() {
     Map<Integer, Integer> record = new HashMap<>();
     record.put(1, 5);
+    record.put(2, 3);
     return record;
   }
 }
