@@ -31,8 +31,8 @@ public class GameScoreTest {
 
   }
 
-  private HashMap<Integer, Integer> generateRecord() {
-    HashMap<Integer, Integer> record = new HashMap<>();
+  private Map<Integer, Integer> generateRecord() {
+    Map<Integer, Integer> record = new HashMap<>();
     record.put(1, 5);
     return record;
   }

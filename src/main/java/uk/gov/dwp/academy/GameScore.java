@@ -9,7 +9,7 @@ import uk.gov.dwp.academy.logic.PinMap;
 
 public class GameScore implements GameScoreInterface {
 
-  private GameStateInterface gameState;
+  private final GameStateInterface gameState;
 
   public GameScore(GameState gameState) {
     this.gameState = gameState;
