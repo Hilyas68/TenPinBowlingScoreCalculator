@@ -2,6 +2,7 @@ package uk.gov.dwp.academy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
+import static java.util.Map.entry;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -76,5 +77,20 @@ public class GameScoreTest {
     record.put(10, 6);
 
     return record;
+  }
+
+  private Map<Integer, Integer> generateRecord() {
+    return Map.ofEntries(
+        entry(1, 2),
+        entry(2, 3),
+        entry(3, 5),
+        entry(4, 5),
+        entry(5, 2),
+        entry(6, 5),
+        entry(7, 3),
+        entry(8, 1),
+        entry(9, 2),
+        entry(10, 6)
+    );
   }
 }
