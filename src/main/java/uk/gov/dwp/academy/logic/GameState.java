@@ -15,6 +15,12 @@ public class GameState implements GameStateInterface {
     rollsInFrame = 0;
   }
 
+  public GameState(int frameState) {
+    rollRecord = new PinMap();
+    this.frameState = frameState;
+    rollsInFrame = 0;
+  }
+
   @Override
   public boolean checkPinCount(int i) {
     return false;
@@ -23,14 +29,16 @@ public class GameState implements GameStateInterface {
   @Override
   public int recordRoll(int pins) {
 
-    if (pins == STRIKE) {
-      frameState++;
-      rollsInFrame = 0;
-    } else {
-      rollsInFrame++;
-      if (rollsInFrame == 2) {
+    if (frameState < 10) {
+      if (pins == STRIKE) {
         frameState++;
         rollsInFrame = 0;
+      } else {
+        rollsInFrame++;
+        if (rollsInFrame == 2) {
+          frameState++;
+          rollsInFrame = 0;
+        }
       }
     }
 

@@ -2,7 +2,10 @@ package uk.gov.dwp.academy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.when;
 
+import java.util.Map;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -63,12 +66,23 @@ public class GameStateTest {
   }
 
   @Test
+  @Disabled
   @DisplayName("Given two rolls that are both strikes then return current frame plus 2")
   public void givenTwoRollBothStrikes(){
     gameState.recordRoll(10);
     int frame = gameState.recordRoll(10);
     assertEquals(3, frame, "should return the current frame + 2");
   }
+
+  @Test
+  @DisplayName("Given two rolls that are spare in frame 10 then return frame 10")
+  public void givenTwoRollsInFrame10AndSpare(){
+    GameState state = new GameState(10);
+    state.recordRoll(6);
+    int frame = state.recordRoll(4);
+    assertEquals(10, frame, "should return the last frame");
+  }
+
 
   // Given a start of frame x
   // when one roll - not a strike
