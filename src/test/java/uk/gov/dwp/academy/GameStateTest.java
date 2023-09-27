@@ -83,6 +83,15 @@ public class GameStateTest {
     assertEquals(10, frame, "should return the last frame");
   }
 
+  @Test
+  @DisplayName("Given a roll that is a strike in frame 10 and an additional two rolls, then return frame 11")
+  public void givenAStrikeInFrame10And2RollsReturnFrame10() {
+    GameState state = new GameState(10);
+    state.recordRoll(10);
+    state.recordRoll(8);
+    int frame = state.recordRoll(5);
+    assertEquals(11, frame, "Should return frame 11.");
+  }
 
   // Given a start of frame x
   // when one roll - not a strike

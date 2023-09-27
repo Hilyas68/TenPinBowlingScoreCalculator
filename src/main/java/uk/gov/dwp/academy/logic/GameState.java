@@ -40,7 +40,12 @@ public class GameState implements GameStateInterface {
           rollsInFrame = 0;
         }
       }
+    } else {
+      if (pins == STRIKE){
+        frameState++;
+      }
     }
+
 
     rollRecord.put(pins);
     return frameState;
