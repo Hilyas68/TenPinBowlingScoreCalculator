@@ -4,6 +4,7 @@ import java.util.Map;
 
 public class GameState implements GameStateInterface {
 
+  public static final int STRIKE = 10;
   private PinMap rollRecord;
   private int frameState;
   private int rollsInFrame;
@@ -22,7 +23,7 @@ public class GameState implements GameStateInterface {
   @Override
   public int recordRoll(int pins) {
 
-    if (pins == 10) {
+    if (pins == STRIKE) {
       frameState++;
       rollsInFrame = 0;
     } else {
