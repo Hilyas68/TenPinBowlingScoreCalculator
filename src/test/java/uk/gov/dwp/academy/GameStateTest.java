@@ -88,7 +88,7 @@ public class GameStateTest {
   public void givenAStrikeInFrame10And2RollsReturnFrame10() {
     GameState state = new GameState(10);
     state.recordRoll(10);
-    state.recordRoll(8);
+    state.recordRoll(10);
     int frame = state.recordRoll(5);
     assertEquals(11, frame, "Should return frame 11.");
   }

@@ -41,11 +41,14 @@ public class GameState implements GameStateInterface {
         }
       }
     } else {
-      if (pins == STRIKE){
-        frameState++;
-      }
-    }
 
+      if (rollsInFrame == 0) {
+        if (pins == STRIKE) {
+          frameState++;
+        }
+      }
+      rollsInFrame++;
+    }
 
     rollRecord.put(pins);
     return frameState;
