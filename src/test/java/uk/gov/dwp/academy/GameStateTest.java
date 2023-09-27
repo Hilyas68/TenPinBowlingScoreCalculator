@@ -62,6 +62,14 @@ public class GameStateTest {
     assertEquals(2, result,"should return the next frame");
   }
 
+  @Test
+  @DisplayName("Given two rolls that are both strikes then return current frame plus 2")
+  public void givenTwoRollBothStrikes(){
+    gameState.recordRoll(10);
+    int frame = gameState.recordRoll(10);
+    assertEquals(3, frame, "should return the current frame + 2");
+  }
+
   // Given a start of frame x
   // when one roll - not a strike
   // then frame will be x
