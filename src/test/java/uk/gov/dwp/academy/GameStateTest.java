@@ -84,7 +84,7 @@ public class GameStateTest {
   }
 
   @Test
-  @DisplayName("Given a roll that is a strike in frame 10 and an additional two rolls, then return frame 11")
+  @DisplayName("Given first roll is a strike in frame 10 and an additional two rolls, then return frame 11")
   public void givenAStrikeInFrame10And2RollsReturnFrame10() {
     GameState state = new GameState(10);
     state.recordRoll(10);
