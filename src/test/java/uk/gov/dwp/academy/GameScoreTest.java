@@ -11,8 +11,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.dwp.academy.logic.GameState;
-import uk.gov.dwp.academy.logic.GameStateInterface;
-import uk.gov.dwp.academy.logic.PinMap;
 
 @ExtendWith(MockitoExtension.class)
 public class GameScoreTest {
@@ -24,14 +22,20 @@ public class GameScoreTest {
   @DisplayName("Given a roll then return score")
   public void calculateScore() {
 
-    when(gameState.getRecord()).thenReturn(generateRecord());
+    when(gameState.getRecord()).thenReturn(generateRecordForSingleRoll());
     GameScore gameScore = new GameScore(gameState);
     int score = gameScore.calculate();
     assertEquals(5, score, "should return score 5");
 
   }
 
-  private Map<Integer, Integer> generateRecord() {
+  private Map<Integer, Integer> generateRecordForSingleRoll() {
+    Map<Integer, Integer> record = new HashMap<>();
+    record.put(1, 5);
+    return record;
+  }
+
+  private Map<Integer, Integer> generateRecordForTwoRolls() {
     Map<Integer, Integer> record = new HashMap<>();
     record.put(1, 5);
     return record;
