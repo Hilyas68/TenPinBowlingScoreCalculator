@@ -85,12 +85,20 @@ public class GameStateTest {
 
   @Test
   @DisplayName("Given first roll is a strike in frame 10 and an additional two rolls, then return frame 11")
-  public void givenAStrikeInFrame10And2RollsReturnFrame10() {
+  public void givenAStrikeInFrame10And2RollsReturnFrame11() {
     GameState state = new GameState(10);
     state.recordRoll(10);
     state.recordRoll(10);
     int frame = state.recordRoll(5);
     assertEquals(11, frame, "Should return frame 11.");
+  }
+
+  @Test
+  @DisplayName("Given first roll is a strike in frame 10, return frame as 10")
+  public void givenFrameIs10AndFirstRollIsAStrikeReturnFrame10() {
+    GameState state = new GameState(10);
+    int frame = state.recordRoll(10);
+    assertEquals(10, frame, "should return frame 10");
   }
 
   // Given a start of frame x

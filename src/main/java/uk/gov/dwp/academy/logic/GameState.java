@@ -41,12 +41,11 @@ public class GameState implements GameStateInterface {
         }
       }
     } else {
-
-      if (rollsInFrame == 0) {
-        if (pins == STRIKE) {
-          frameState++;
-        }
+      if (rollsInFrame == 2) {
+        frameState++;
       }
+
+
       rollsInFrame++;
     }
 
