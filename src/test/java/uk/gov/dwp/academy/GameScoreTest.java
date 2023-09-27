@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,24 +18,27 @@ public class GameScoreTest {
 
   @Mock
   private GameState gameState;
+  private GameScore gameScore;
+
+  @BeforeEach
+  public void setup() {
+    gameScore = new GameScore(gameState);
+  }
 
   @Test
   @DisplayName("Given a roll then return score")
   public void calculateScore() {
 
     when(gameState.getRecord()).thenReturn(generateRecordForSingleRoll());
-    GameScore gameScore = new GameScore(gameState);
-    int score = gameScore.calculate();
-    assertEquals(5, score, "should return score 5");
+    assertEquals(5, gameScore.calculate(), "should return score 5");
   }
 
   @Test
   @DisplayName("Given two rolls return the score")
   public void givenTwoRollsReturnScore() {
+
     when(gameState.getRecord()).thenReturn(generateRecordForTwoRolls());
-    GameScore gameScore = new GameScore(gameState);
-    int score = gameScore.calculate();
-    assertEquals(8, score, "Should return the score for two rolls.");
+    assertEquals(8, gameScore.calculate(), "Should return the score for two rolls.");
   }
 
   private Map<Integer, Integer> generateRecordForSingleRoll() {
