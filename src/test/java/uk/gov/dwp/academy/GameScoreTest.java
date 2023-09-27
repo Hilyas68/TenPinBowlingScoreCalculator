@@ -64,9 +64,17 @@ public class GameScoreTest {
 
   private Map<Integer, Integer> generateRecordWithSpare() {
     Map<Integer, Integer> record = new HashMap<>();
-    record.put(1, 5);
-    record.put(2, 5);
-    record.put(3, 3);
+    record.put(1, 2);
+    record.put(2, 3);
+    record.put(3, 5);
+    record.put(4, 5);
+    record.put(5, 2);
+    record.put(6, 4);
+    record.put(7, 3);
+    record.put(8, 1);
+    record.put(9, 2);
+    record.put(10, 6);
+
     return record;
   }
 }
