@@ -26,24 +26,39 @@ public class GameScoreTest {
   }
 
   @Test
-  @DisplayName("Given a roll then return score")
-  public void calculateScore() {
+  @DisplayName("Given no record then return zero")
+  public void givenNoRecordReturnZero() {
 
-    when(gameState.getRecord()).thenReturn(generateRecordForSingleRoll());
-    assertEquals(5, gameScore.calculate(), "should return score 5");
+    assertEquals(0, gameScore.calculate(), "should return score zero");
   }
 
   @Test
-  @DisplayName("Given two rolls return the score")
-  public void givenTwoRollsReturnScore() {
+  @DisplayName("Given record with no strikes or spare return the cumulative score")
+  public void recordWithNoStrikeOrSpare() {
 
-    when(gameState.getRecord()).thenReturn(generateRecordForTwoRolls());
-    assertEquals(8, gameScore.calculate(), "Should return the score for two rolls.");
+    when(gameState.getRecord()).thenReturn(generateRecordWithNoStrikeOrSpare());
+    assertEquals(27, gameScore.calculate(), "Should return the score for two rolls.");
   }
 
-  private Map<Integer, Integer> generateRecordForSingleRoll() {
+  @Test
+  @DisplayName("Given rolls that are spare with a bonus return score")
+  public void givenASpareWithBonusRollCalculateScore(){
+    when(gameState.getRecord()).thenReturn(generateRecordWithSpareAndBonus());
+    assertEquals(13, gameScore.calculate(), "Should return score for a spare with bonus");
+  }
+
+  private Map<Integer, Integer> generateRecordWithNoStrikeOrSpare() {
     Map<Integer, Integer> record = new HashMap<>();
-    record.put(1, 5);
+    record.put(1, 2);
+    record.put(2, 3);
+    record.put(3, 5);
+    record.put(4, 1);
+    record.put(5, 0);
+    record.put(6, 4);
+    record.put(7, 3);
+    record.put(8, 1);
+    record.put(9, 2);
+    record.put(10, 6);
     return record;
   }
 
@@ -51,6 +66,14 @@ public class GameScoreTest {
     Map<Integer, Integer> record = new HashMap<>();
     record.put(1, 5);
     record.put(2, 3);
+    return record;
+  }
+
+  private Map<Integer, Integer> generateRecordWithSpareAndBonus() {
+    Map<Integer, Integer> record = new HashMap<>();
+    record.put(1, 5);
+    record.put(2, 5);
+    record.put(3, 3);
     return record;
   }
 }
