@@ -45,7 +45,7 @@ public class GameState implements GameStateInterface {
       }
     } else {
       pinsCount += pins;
-      if(rollsInFrame == 1 && pinsCount < 10){
+      if(isNotSpare()){
         frameState++;
       }
       if (rollsInFrame == 2) {
@@ -58,6 +58,10 @@ public class GameState implements GameStateInterface {
 
     rollRecord.put(pins);
     return frameState;
+  }
+
+  private boolean isNotSpare() {
+    return rollsInFrame == 1 && pinsCount < 10;
   }
 
   @Override
