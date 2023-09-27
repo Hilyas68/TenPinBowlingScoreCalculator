@@ -8,17 +8,20 @@ public class GameState implements GameStateInterface {
   private PinMap rollRecord;
   private int frameState;
   private int rollsInFrame;
+  private int pinsCount;
 
   public GameState() {
     rollRecord = new PinMap();
     frameState = 1;
     rollsInFrame = 0;
+    pinsCount = 0;
   }
 
   public GameState(int frameState) {
     rollRecord = new PinMap();
     this.frameState = frameState;
     rollsInFrame = 0;
+    pinsCount = 0;
   }
 
   @Override
