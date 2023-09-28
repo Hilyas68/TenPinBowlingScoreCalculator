@@ -1,5 +1,6 @@
 package uk.gov.dwp.academy;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Disabled;
@@ -26,12 +27,12 @@ public class GameStateTest {
     assertEquals(expectedFrameId, frameId, "should return frame id");
   }
 
-  @Test
-  @DisplayName("Given a pin when the roll is recorded, confirm state")
-  public void whenRollIsRecordedConfirmState() {
-    gameState.recordRoll(8);
-    Mockito.verify(rollRecord, times(1)).put(8);
-  }
+//  @Test
+//  @DisplayName("Given a pin when the roll is recorded, confirm state")
+//  public void whenRollIsRecordedConfirmState() {
+//    gameState.recordRoll(8);
+//    Mockito.verify(rollRecord, times(1)).put(8);
+//  }
 
   @Test
   @DisplayName("Given a roll that is not a strike, return frame as one")
@@ -118,6 +119,17 @@ public class GameStateTest {
     state.recordRoll(5);
     int frame = state.recordRoll(9);
     assertEquals(11, frame, "Should return frame 11");
+  }
+
+  @Test
+  @DisplayName("Given some rolls recorded then getRecord returns a List of the rolls")
+  void getRecordReturnsRolls() {
+    GameState gameState = new GameState();
+    gameState.recordRoll(2);
+    gameState.recordRoll(3);
+    gameState.recordRoll(4);
+
+    assertArrayEquals(new Integer[]{2,3,4}, gameState.getRecord().toArray());
   }
 
   // Given a start of frame x

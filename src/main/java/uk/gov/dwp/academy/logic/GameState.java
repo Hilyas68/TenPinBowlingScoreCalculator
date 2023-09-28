@@ -1,25 +1,27 @@
 package uk.gov.dwp.academy.logic;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class GameState implements GameStateInterface {
 
   public static final int STRIKE = 10;
-  private PinMap rollRecord;
+//  private PinMap rollRecord;
   private int frameState;
+  private List<Integer> rollRecord;
   private int rollsInFrame;
   private int pinsCount;
 
   public GameState() {
-    rollRecord = new PinMap();
+    rollRecord = new ArrayList<>();
     frameState = 1;
     rollsInFrame = 0;
     pinsCount = 0;
   }
 
   public GameState(int frameState) {
-    rollRecord = new PinMap();
+    rollRecord = new ArrayList<>();
     this.frameState = frameState;
     rollsInFrame = 0;
     pinsCount = 0;
@@ -57,7 +59,7 @@ public class GameState implements GameStateInterface {
       rollsInFrame++;
     }
 
-    rollRecord.put(pins);
+    rollRecord.add(pins);
     return frameState;
   }
 
@@ -67,6 +69,6 @@ public class GameState implements GameStateInterface {
 
   @Override
   public List<Integer> getRecord() {
-    return rollRecord.get();
+    return rollRecord;
   }
 }
