@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 import static java.util.Map.entry;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import uk.gov.dwp.academy.logic.GameScore;
 import uk.gov.dwp.academy.logic.GameState;
 
 @ExtendWith(MockitoExtension.class)
@@ -43,54 +46,16 @@ public class GameScoreTest {
 
   @Test
   @DisplayName("Given record with a spare return cumulative score")
-  public void recordWithASpareReturnScore(){
+  public void recordWithASpareReturnScore() {
     when(gameState.getRecord()).thenReturn(generateRecordWithSpare());
     assertEquals(35, gameScore.calculate(), "Should return score for a spare with bonus");
   }
 
-  private Map<Integer, Integer> generateRecordWithNoStrikeOrSpare() {
-    Map<Integer, Integer> record = new HashMap<>();
-    record.put(1, 2);
-    record.put(2, 3);
-    record.put(3, 5);
-    record.put(4, 1);
-    record.put(5, 0);
-    record.put(6, 4);
-    record.put(7, 3);
-    record.put(8, 1);
-    record.put(9, 2);
-    record.put(10, 6);
-    return record;
+  private List<Integer> generateRecordWithNoStrikeOrSpare() {
+    return List.of(2, 3, 5, 1, 0, 4, 3, 1, 2, 6);
   }
 
-  private Map<Integer, Integer> generateRecordWithSpare() {
-    Map<Integer, Integer> record = new HashMap<>();
-    record.put(1, 2);
-    record.put(2, 3);
-    record.put(3, 5);
-    record.put(4, 5);
-    record.put(5, 2);
-    record.put(6, 4);
-    record.put(7, 3);
-    record.put(8, 1);
-    record.put(9, 2);
-    record.put(10, 6);
-
-    return record;
-  }
-
-  private Map<Integer, Integer> generateRecord() {
-    return Map.ofEntries(
-        entry(1, 2),
-        entry(2, 3),
-        entry(3, 5),
-        entry(4, 5),
-        entry(5, 2),
-        entry(6, 5),
-        entry(7, 3),
-        entry(8, 1),
-        entry(9, 2),
-        entry(10, 6)
-    );
+  private List<Integer> generateRecordWithSpare() {
+    return List.of(2, 3, 5, 5, 2, 4, 3, 1, 2, 6);
   }
 }

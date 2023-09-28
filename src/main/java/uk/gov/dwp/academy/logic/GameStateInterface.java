@@ -1,5 +1,6 @@
 package uk.gov.dwp.academy.logic;
 
+import java.util.List;
 import java.util.Map;
 
 public interface GameStateInterface {
@@ -8,5 +9,5 @@ public interface GameStateInterface {
 
   int recordRoll(int i);
 
-  Map<Integer, Integer> getRecord();
+  List<Integer> getRecord();
 }

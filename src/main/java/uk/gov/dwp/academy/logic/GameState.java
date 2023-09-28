@@ -1,5 +1,6 @@
 package uk.gov.dwp.academy.logic;
 
+import java.util.List;
 import java.util.Map;
 
 public class GameState implements GameStateInterface {
@@ -65,7 +66,7 @@ public class GameState implements GameStateInterface {
   }
 
   @Override
-  public Map<Integer, Integer> getRecord() {
+  public List<Integer> getRecord() {
     return rollRecord.get();
   }
 }

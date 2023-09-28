@@ -1,20 +1,23 @@
 package uk.gov.dwp.academy.logic;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class PinMap {
-  private HashMap<Integer, Integer> record;
+
+  private List<Integer> record;
 
   public PinMap() {
-    record = new HashMap<>();
+    record = new ArrayList<>();
   }
 
   public void put(int pins) {
     int size = record.size();
-    record.put(size + 1, pins);
+    record.add(pins);
   }
 
-  public HashMap<Integer, Integer> get() {
-      return record;
+  public List<Integer> get() {
+    return record;
   }
 }
