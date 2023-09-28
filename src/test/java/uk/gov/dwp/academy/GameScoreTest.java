@@ -59,10 +59,10 @@ public class GameScoreTest {
   }
 
   private List<Integer> generateRecordWithNoStrikeOrSpare() {
-    return List.of(2, 3, 5, 1, 0, 4, 3, 1, 2, 6);
+    return List.of(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 5, 1, 0, 4, 3, 1, 2, 6);
   }
 
   private List<Integer> generateRecordWithSpare() {
-    return List.of(2, 3, 5, 5, 2, 4, 3, 1, 2, 6);
+    return List.of(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 5, 5, 2, 4, 3, 1, 2, 6);
   }
 }

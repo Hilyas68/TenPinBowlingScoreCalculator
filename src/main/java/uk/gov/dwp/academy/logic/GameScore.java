@@ -1,11 +1,6 @@
 package uk.gov.dwp.academy.logic;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import uk.gov.dwp.academy.logic.GameScoreInterface;
-import uk.gov.dwp.academy.logic.GameState;
-import uk.gov.dwp.academy.logic.GameStateInterface;
 
 public class GameScore implements GameScoreInterface {
 
@@ -22,63 +17,48 @@ public class GameScore implements GameScoreInterface {
   public int calculate() {
 
     List<Integer> records = gameState.getRecord();
-    int score = 0;
-    int frameRoll = SECOND;
-    int pinLeft = 10;
 
-    for (int roll = 0; roll < records.size(); roll++) {
+    if (records.isEmpty()) {
+      return 0;
+    }
+    int score = 0;
+    int frameCount = 0;
+    int roll = 0;
+
+    while (frameCount < 10) {
 
       int pins = records.get(roll);
 
-      if (frameRoll == FIRST) {
-        frameRoll = SECOND;
+      if (isStrike(roll, records)) {
+        score += addStrikeBonus(records, roll);
+
+      } else if (isSpare(roll, records)) {
+        score += records.get(roll + 2);
+      }
+
+      if (frameCount == 9 && isStrike(roll, records)) {
+        score += pins;
       } else {
-        frameRoll = FIRST;
+        int pinsRoll = records.get(roll + 1);
+        score += pins + pinsRoll;
       }
 
-      pinLeft = pinLeft - pins;
-
-      if (isStrike(frameRoll, pins)) {
-        score += calculateStrikeScore(records, roll);
-
-      }else if (isSpare(frameRoll, pinLeft)) {
-        score += records.get(roll + 1);
-      }
-
-      pinLeft = frameReset(frameRoll, pinLeft);
-
-      score += pins;
+      roll = roll + 2;
+      frameCount++;
     }
 
-    return score;
   }
 
-  private int frameReset(int frameRoll, int pinLeft) {
-    if (frameRoll == SECOND) {
-      return 10;
-    }
-    return pinLeft;
+  private int addStrikeBonus(List<Integer> records, int roll) {
+    return records.get(roll + 1) + records.get(roll + 2);
   }
 
-  private int calculateStrikeScore(List<Integer> records, int roll) {
-    int score = 0;
-    score += records.get(roll + 1);
-    score += records.get(roll + 2);
-    return score;
+  private boolean isStrike(int roll, List<Integer> records) {
+    return 10 == records.get(roll);
   }
 
-  private boolean isStrike(int frameRoll, int pins) {
-    if (frameRoll == FIRST) {
-      return 10 == pins;
-    }
-    return false;
-  }
+  private boolean isSpare(int roll, List<Integer> records) {
 
-  private boolean isSpare(int frameRoll, int pinLeft) {
-
-    if (frameRoll == SECOND) {
-      return pinLeft == 0;
-    }
-    return false;
+    return records.get(roll) + records.get(roll + 1) == 10;
   }
 }
