@@ -46,6 +46,7 @@ public class GameScore implements GameScoreInterface {
       roll = roll + 2;
       frameCount++;
     }
+    return score;
 
   }
 

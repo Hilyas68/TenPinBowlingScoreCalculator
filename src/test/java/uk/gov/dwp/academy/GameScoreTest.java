@@ -54,8 +54,16 @@ public class GameScoreTest {
   @Test
   @DisplayName("Given a record with a strike return score.")
   public void recordWithAStrikeReturnScore() {
-    when(gameState.getRecord()).thenReturn(List.of(2, 5, 10, 4, 3, 6, 3, 8, 1));
-    assertEquals(49, gameScore.calculate(), "should return score");
+    when(gameState.getRecord()).thenReturn(generateRecordWithStrike());
+    assertEquals(51, gameScore.calculate(), "should return score");
+  }
+
+  @Test
+  @DisplayName("Given a strike and a spare in frame 10, return score")
+  public void givenAStrikeAndASpareInFrame10ReturnScore() {
+    when(gameState.getRecord()).thenReturn(
+        List.of(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 5, 5));
+    assertEquals(38, gameScore.calculate(), "Should return score");
   }
 
   private List<Integer> generateRecordWithNoStrikeOrSpare() {
@@ -65,4 +73,9 @@ public class GameScoreTest {
   private List<Integer> generateRecordWithSpare() {
     return List.of(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 5, 5, 2, 4, 3, 1, 2, 6);
   }
+
+  private List<Integer> generateRecordWithStrike() {
+    return List.of(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 10, 5, 4, 3, 6, 3, 8, 1);
+  }
+
 }
