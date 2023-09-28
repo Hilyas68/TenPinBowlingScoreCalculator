@@ -129,7 +129,10 @@ public class GameStateTest {
     gameState.recordRoll(3);
     gameState.recordRoll(4);
 
-    assertArrayEquals(new Integer[]{2,3,4}, gameState.getRecord().toArray());
+    assertArrayEquals(
+        new Integer[]{2,3,4},
+        gameState.getRecord().toArray()
+    );
   }
 
   // Given a start of frame x
