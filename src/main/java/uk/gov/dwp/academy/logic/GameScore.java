@@ -32,10 +32,18 @@ public class GameScore implements GameScoreInterface {
       } else {
         frameRoll = 1;
       }
-      pinLeft = pinLeft - pins;
 
-      if (pinLeft == 0) {
-        score += records.get(roll + 1);
+      if (frameRoll == 1) {
+        if (pinLeft == pins) {
+          score += records.get(roll + 1);
+          score += records.get(roll + 2);
+        }
+      }
+      pinLeft = pinLeft - pins;
+      if (frameRoll == 0) {
+        if (pinLeft == 0) {
+          score += records.get(roll + 1);
+        }
       }
       if (frameRoll == 0) {
         pinLeft = 10;
@@ -45,5 +53,7 @@ public class GameScore implements GameScoreInterface {
     }
 
     return score;
+
+
   }
 }

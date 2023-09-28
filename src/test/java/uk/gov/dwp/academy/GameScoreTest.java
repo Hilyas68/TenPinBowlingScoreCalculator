@@ -51,6 +51,13 @@ public class GameScoreTest {
     assertEquals(35, gameScore.calculate(), "Should return score for a spare with bonus");
   }
 
+  @Test
+  @DisplayName("Given a record with a strike return score.")
+  public void recordWithAStrikeReturnScore() {
+    when(gameState.getRecord()).thenReturn(List.of(2, 5, 10, 4, 3, 6, 3, 8, 1));
+    assertEquals(49, gameScore.calculate(), "should return score");
+  }
+
   private List<Integer> generateRecordWithNoStrikeOrSpare() {
     return List.of(2, 3, 5, 1, 0, 4, 3, 1, 2, 6);
   }
