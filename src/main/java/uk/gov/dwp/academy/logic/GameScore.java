@@ -33,11 +33,10 @@ public class GameScore implements GameScoreInterface {
         frameRoll = 1;
       }
 
-      if (frameRoll == 1) {
-        if (pinLeft == pins) {
-          score += records.get(roll + 1);
-          score += records.get(roll + 2);
-        }
+      if (isStrike(frameRoll, pins)) {
+        score += records.get(roll + 1);
+        score += records.get(roll + 2);
+
       }
       pinLeft = pinLeft - pins;
       if (frameRoll == 0) {
@@ -53,7 +52,12 @@ public class GameScore implements GameScoreInterface {
     }
 
     return score;
+  }
 
-
+  private boolean isStrike(int frameRoll, int pins) {
+    if (frameRoll == 1) {
+      return 10 == pins;
+    }
+    return false;
   }
 }
