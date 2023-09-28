@@ -15,32 +15,36 @@ public class GameScore implements GameScoreInterface {
     this.gameState = gameState;
   }
 
+  private static final int FIRST = 1;
+  private static final int SECOND = 0;
+
   @Override
   public int calculate() {
 
     List<Integer> records = gameState.getRecord();
     int score = 0;
-    int frameRoll = 0;
+    int frameRoll = SECOND;
     int pinLeft = 10;
 
     for (int roll = 0; roll < records.size(); roll++) {
 
       int pins = records.get(roll);
 
-      if (frameRoll == 1) {
-        frameRoll = 0;
+      if (frameRoll == FIRST) {
+        frameRoll = SECOND;
       } else {
-        frameRoll = 1;
+        frameRoll = FIRST;
       }
+
+      pinLeft = pinLeft - pins;
 
       if (isStrike(frameRoll, pins)) {
         score += calculateStrikeScore(records, roll);
 
-      }
-      pinLeft = pinLeft - pins;
-      if (isSpare(frameRoll, pinLeft)) {
+      }else if (isSpare(frameRoll, pinLeft)) {
         score += records.get(roll + 1);
       }
+
       pinLeft = frameReset(frameRoll, pinLeft);
 
       score += pins;
@@ -50,7 +54,7 @@ public class GameScore implements GameScoreInterface {
   }
 
   private int frameReset(int frameRoll, int pinLeft) {
-    if (frameRoll == 0) {
+    if (frameRoll == SECOND) {
       return 10;
     }
     return pinLeft;
@@ -64,7 +68,7 @@ public class GameScore implements GameScoreInterface {
   }
 
   private boolean isStrike(int frameRoll, int pins) {
-    if (frameRoll == 1) {
+    if (frameRoll == FIRST) {
       return 10 == pins;
     }
     return false;
@@ -72,7 +76,7 @@ public class GameScore implements GameScoreInterface {
 
   private boolean isSpare(int frameRoll, int pinLeft) {
 
-    if (frameRoll == 0) {
+    if (frameRoll == SECOND) {
       return pinLeft == 0;
     }
     return false;
