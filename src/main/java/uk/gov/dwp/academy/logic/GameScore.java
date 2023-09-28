@@ -34,29 +34,46 @@ public class GameScore implements GameScoreInterface {
       }
 
       if (isStrike(frameRoll, pins)) {
-        score += records.get(roll + 1);
-        score += records.get(roll + 2);
+        score += calculateStrikeScore(records, roll);
 
       }
       pinLeft = pinLeft - pins;
-      if (frameRoll == 0) {
-        if (pinLeft == 0) {
-          score += records.get(roll + 1);
-        }
+      if (isSpare(frameRoll, pinLeft)) {
+        score += records.get(roll + 1);
       }
-      if (frameRoll == 0) {
-        pinLeft = 10;
-      }
-      score += pins;
+      pinLeft = frameReset(frameRoll, pinLeft);
 
+      score += pins;
     }
 
+    return score;
+  }
+
+  private int frameReset(int frameRoll, int pinLeft) {
+    if (frameRoll == 0) {
+      return 10;
+    }
+    return pinLeft;
+  }
+
+  private int calculateStrikeScore(List<Integer> records, int roll) {
+    int score = 0;
+    score += records.get(roll + 1);
+    score += records.get(roll + 2);
     return score;
   }
 
   private boolean isStrike(int frameRoll, int pins) {
     if (frameRoll == 1) {
       return 10 == pins;
+    }
+    return false;
+  }
+
+  private boolean isSpare(int frameRoll, int pinLeft) {
+
+    if (frameRoll == 0) {
+      return pinLeft == 0;
     }
     return false;
   }
